@@ -1,0 +1,37 @@
+<% layout('/layouts/boilerplate') %>
+
+<div class="column">
+    <div class="col-md-6 offset-md-3">
+        <h1 class="text-warning text-center">Leave a Review</h1>
+        <form action="/arts/<%= art._id%>/reviews" method="POST" novalidate class="validated-form">
+            <div class="mb-3">
+                <label class="text-warning form-label" for="body">Review</label>
+                <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3" required></textarea>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-warning">Submit Review</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6 offset-md-3">
+        <h3 class="text-warning text-center">Past Reviews</h1>
+        <% for(let review of art.reviews){ %>
+            <div style="border: none; background: transparent;" class="card mb-3 ">
+                <div class="card-body">
+                    <h6 class="text-warning card-subtitle mb-2">By <%= review.author.username%></h6>
+                    <p class="text-warning card-text">Review: <%= review.body %></p>
+                    <% if(currentUser._id && review.author.equals(currentUser._id)){ %> 
+                        <form action="/arts/<%= art._id%>/reviews/<%= review._id%>?_method=DELETE" method="POST"> 
+                            <div class="mb-3">
+                                <button class="btn btn-danger">Delete</button>
+                            </div>
+                        </form>
+                    <% } %>   
+                </div>
+            </div>
+        <% } %>         
+    </div>
+</div>
+
+<a class="text-warning" href="/arts/<%= art._id%>">Back</a>
+

@@ -1,0 +1,32 @@
+<% layout('/layouts/boilerplate')%>
+
+<div class="row">
+    <h1 class="text-warning text-center">New Artpiece</h1>
+    <div class="col-md-6 offset-md-3">
+        <form action="/arts" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label class="text-warning form-label" for="title">Title</label>
+                <input class="form-control" type="text" id="title" name="art[title]" required>
+            </div>
+            <div class="mb-3">
+                <label class="text-warning form-label" for="description">Description</label>
+                <textarea class="form-control" type="text" id="description" name="art[description]"
+                    required></textarea>
+            </div>
+            <select name="art[category]" class="mb-3 form-select" aria-label="Default select example">
+                <option selected>Type of Art</option>
+                <option value="Sketch">Sketch</option>
+                <option value="Painting">Painting</option>
+                <option value="Other">Other</option>
+            </select>
+            <div class="input-group mb-3">
+                <input type="file" class="form-file-input" id="image" name="image" multiple>
+                <label class="text-warning form-file-label" for="image">Upload</label>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-warning">Add Artpiece</button>
+            </div>
+        </form>
+        <a class="text-warning" href="/arts">All Posts</a>
+    </div>
+</div>

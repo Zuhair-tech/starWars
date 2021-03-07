@@ -1,0 +1,14 @@
+<% layout('/layouts/boilerplate') %>
+
+<h1 class="text-warning text-center">All Posts</h1>
+
+<div class="contianer row flex-wrap justify-content-evenly">
+    <% for (let art of arts){%>
+        <div class="card border border-warning border-2 m-3" style="width: 22rem; height: 23rem; background-color:transparent">
+            <img style="height: 80% ; width: 100% ; object-fit: contain;" src="<%=art.images[0].url%>" class="card-img-top" alt="">
+            <div class="card-body w-100">
+                <a href="/arts/<%=art._id%>" class="btn btn-warning w-100">View</a>
+            </div>
+        </div>
+    <% } %> 
+<div>
